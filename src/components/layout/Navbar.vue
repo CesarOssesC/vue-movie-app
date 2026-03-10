@@ -9,7 +9,7 @@
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link active" aria-current="page" href="#">Películas</a>
                     <router-link class="nav-link" to="/actors">Actores</router-link>
-                    <a class="nav-link" href="#">Géneros</a>
+                    <router-link class="nav-link" to="/generos">Generos</router-link>
                 </div>
             </div>
         </div>

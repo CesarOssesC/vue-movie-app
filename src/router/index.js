@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import ActorsView from '@/views/ActorsView.vue'
+import GenerosView from '@/views/GenerosView.vue'
 
 
 const router = createRouter({
@@ -9,6 +10,10 @@ const router = createRouter({
     {
       path: '/actors',
       component: ActorsView
+    },
+    {
+      path: '/generos',
+      component: GenerosView 
     }
   ],
 })

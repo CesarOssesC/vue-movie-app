@@ -70,7 +70,7 @@
     }
 
     const removeActor = async (id) => {
-        if (!confirm('Seguro quieres eliminar este actor?')) return
+        if (!confirm('Seguro/a quieres eliminar este actor?')) return
         await deleteActor(id)
         await loadActores()
     }

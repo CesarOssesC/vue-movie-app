@@ -18,3 +18,17 @@ export const getActores = async () => {
         ...doc.data()
     }))
 }
+
+export const createActor = async (actor) => {
+    return await addDoc(actoresCollection, actor)
+}
+
+export const updateActor = async (id, actor) => {
+    const actorRef = doc(db, 'actores', id)
+    return await updateDoc(actorRef, actor)
+}
+
+export const deleteActor = async (id) => {
+    const actorRef = doc(db, 'actores', id)
+    return await deleteDoc(actorRef)
+}

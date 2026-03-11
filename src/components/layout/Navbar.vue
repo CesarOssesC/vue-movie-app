@@ -7,7 +7,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link active" aria-current="page" href="#">Películas</a>
+                    <router-link class="nav-link active" aria-current="page" to="/peliculas">Películas</router-link>
                     <router-link class="nav-link" to="/actors">Actores</router-link>
                     <router-link class="nav-link" to="/generos">Generos</router-link>
                 </div>

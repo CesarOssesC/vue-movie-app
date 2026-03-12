@@ -6,12 +6,23 @@
                 <img :src="pelicula.poster" :alt="pelicula.nombre" class="w-100">
             </div>
             <div class="col-5">
-                <p class="fs-1"><strong>Estreno:</strong> {{ pelicula.year }}</p>
-                <ul class="list-group list-group-flush">
-                    <li v-for="actor in getNombreActores()" :key="actor" class="list-group-item">
-                        {{ actor }}
-                    </li>
-                </ul>
+                <p class="fs-1 mb-5"><strong>Estreno:</strong> {{ pelicula.year }}</p>
+                <div class="mb-5">
+                    <h5 class="fw-bold">Full Cast</h5>
+                    <ul class="list-group list-group-flush">
+                        <li v-for="actor in getNombreActores()" :key="actor" class="list-group-item">
+                            {{ actor }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="mb-5">
+                    <h5>Géneros</h5>
+                    <ul class="list-group list-group-flush">
+                        <li v-for="genero in getNombreGeneros()" :key="genero" class="list-group-item">
+                            {{ genero }}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -47,7 +58,7 @@
         if (!pelicula.value.actores) return []
 
         return actores.value
-            .filter(actor => pelicula.value.actores.include(actor.id))
+            .filter(actor => pelicula.value.actores.includes(actor.id))
             .map(actor => actor.nombre)
     }
 
@@ -55,7 +66,7 @@
         if (!pelicula.value.generos) return []
 
         return generos.value
-            .filter(genero => pelicula.value.generos.include(genero.id))
+            .filter(genero => pelicula.value.generos.includes(genero.id))
             .map(genero => genero.nombre)
     }
 </script>

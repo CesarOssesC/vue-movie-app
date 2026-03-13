@@ -26,11 +26,13 @@ const router = createRouter({
     },
     {
       path: '/actors',
-      component: ActorsView
+      component: ActorsView,
+      meta: { requiresAuth: true, requiresAdmin: true }
     },
     {
       path: '/generos',
-      component: GenerosView 
+      component: GenerosView,
+      meta: { requiresAuth: true, requiresAdmin: true } 
     },
     {
       path: '/login',
@@ -41,6 +43,19 @@ const router = createRouter({
       component: RegisterView
     }
   ],
+})
+
+router.beforeEach((to) => {
+  const user = store.state.user
+  const rol = store.state.rol
+
+  if (to.meta.requiresAuth && !user) {
+    return '/login'
+  }
+
+  if (to.meta.requiresAdmin && rol !== 'admin') {
+    return '/peliculas'
+  }
 })
 
 export default router

@@ -2,6 +2,7 @@
     <h1 class="text-center my-5 fw-bold display-5">Películas</h1>
 
     <PeliculaForm 
+        v-if="isAdmin"
         :pelicula="peliculaSeleccionada"
         :actores="actores"
         :generos="generos"
@@ -20,7 +21,8 @@
 </template>
 
 <script setup>
-    import { ref, onMounted } from 'vue'
+    import { ref, onMounted, computed } from 'vue'
+    import { useStore } from 'vuex'
 
     import {
         getPeliculas,
@@ -37,6 +39,11 @@
     const peliculas = ref([])
     const actores = ref([])
     const generos = ref([])
+
+    const store = useStore()
+    //filtros en base a si hay un usario logeado o si es admin o no.
+    const isLogged = computed(() => !!store.state.user)
+    const isAdmin = computed(() => store.state.rol === 'admin')
 
     const peliculaSeleccionada = ref(null)
     const isEditing = ref(false)
